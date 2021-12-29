@@ -34,7 +34,7 @@ route.post("/register", async (req, res) => {
   });
 });
 
-route.get("/login", async (req,res) => {
+route.post("/login", async (req,res) => {
 
 
 
