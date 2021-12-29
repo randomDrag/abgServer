@@ -105,7 +105,7 @@ route.post("/newMassage",adminjwtauth, async (req, res) => {
 
   userDB.findOneAndUpdate(
     {
-      _id: "61c8997a927d84b4bb9b9e63",
+      _id: req.info,
     },
     {
       $push: {
