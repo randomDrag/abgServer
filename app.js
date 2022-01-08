@@ -60,6 +60,7 @@ app.use(express.static(__dirname+"/public"));
 
  let user = require('./routes/user');
 let cr = require('./routes/CreateUser')
+let Admin = require('./routes/Admin')
 
 
 
@@ -67,6 +68,7 @@ let cr = require('./routes/CreateUser')
 // app.use('/admin',admin);
 app.use('/user',user);
 app.use('/createUser',cr);
+app.use('/admin', Admin);
 
 
 
