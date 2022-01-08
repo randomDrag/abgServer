@@ -7,20 +7,20 @@ let route = express.Router();
 
 route.post("/register", (req, res) => {
     let { Email, Password } = req.body;
-    let {id} = req.query;
+   // let {id} = req.query;
+    
     AdminDB.findOne({ Email: Email }, function (err, doc) {
       if (err) {
       } else {
         if (doc === null || doc === "") {
           bcrypt.hash(Password, 10, function (err, hash) {
-            AdminDB.findOneAndUpdate(
-              { _id: id },
-              {
-                 
-                  Email,
-                  Password: hash,
-                
-              },
+          
+          const  dat = new AdminDB( {
+              Email,
+              Password: hash
+            });
+
+            dat.save(
               (err, doc) => {
                 if (err) {
                   res.status(400).json(err);
@@ -28,7 +28,12 @@ route.post("/register", (req, res) => {
                   res.status(200).json({ msg: true });
                 }
               }
-            );
+            )
+           
+
+
+          
+           
   
             // const dat = new userDB({
             //     Email : Email,
